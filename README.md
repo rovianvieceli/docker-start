@@ -9,11 +9,14 @@ Uma configuração básica do Docker, com configuração inicial, para um ambien
 
 ## Começo rápido
 
-Coloque seu código na pasta `app`, execute` docker-compose up` e seu aplicativo estará disponível em `http://localhost`.
+* Coloque seu código na pasta `app`
+* Execute` docker-compose up` a partir da raiz
+* Acesse sua aplicação que estará disponível em `http://localhost`.
 
 ### Coisas a saber:
 
-* A raiz do servidor está na pasta `./app`.
+* A raiz do servidor `localhost` é a pasta `./app`.
+* O Docker roda a partir da pasta raiz `.`
 * Os arquivos de configuração estão localizados na pasta `./docker-compose`
 
 ## Nginx
@@ -31,3 +34,20 @@ O MySQL sobe com um banco configurado, chamado `sample` abaixo as configs do `do
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
 ```
+
+# Ações
+
+* Após subir os containers, entre no container do `php` e execute o `composer`
+
+```bash
+ docker-compose php bash 
+```
+
+###### No windows talvez seja necessário o aliás `winpty` no início de instrução
+
+* Volte um diretório, pois como sabemos está setado o `WORKDIR` para `/var/www/public`
+
+```bash
+cd ..
+composer install
+``
